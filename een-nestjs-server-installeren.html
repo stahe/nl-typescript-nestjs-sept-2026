@@ -1,0 +1,1115 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Inleiding tot de taal TypeScript en het webframework NestJS aan de hand van voorbeelden">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/nl-typescript-nestjs-sept-2026/een-nestjs-server-installeren.html">
+      
+      
+        <link rel="prev" href="de-basis.html">
+      
+      
+        <link rel="next" href="de-http-functies-van-typescript.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>4. Een NestJS-server installeren - Inleiding tot de taal TypeScript en het webframework NestJS aan de hand van voorbeelden</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Inleiding tot de taal TypeScript en het webframework NestJS aan de hand van voorbeelden";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-een-nestjs-server-installeren" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Inleiding tot de taal TypeScript en het webframework NestJS aan de hand van voorbeelden" class="md-header__button md-logo" aria-label="Inleiding tot de taal TypeScript en het webframework NestJS aan de hand van voorbeelden" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Inleiding tot de taal TypeScript en het webframework NestJS aan de hand van voorbeelden
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Een NestJS-server installeren
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Overschakelen naar donkere modus"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Overschakelen naar donkere modus" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Overschakelen naar lichte modus"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Overschakelen naar lichte modus" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/nl-typescript-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Inleiding tot de taal TypeScript en het webframework NestJS aan de hand van voorbeelden" class="md-nav__button md-logo" aria-label="Inleiding tot de taal TypeScript en het webframework NestJS aan de hand van voorbeelden" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Inleiding tot de taal TypeScript en het webframework NestJS aan de hand van voorbeelden
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/nl-typescript-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welkom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inleiding.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Inleiding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="een-werkomgeving-inrichten.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Een werkomgeving inrichten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="de-basis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. De basis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Een NestJS-server installeren
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="een-nestjs-server-installeren.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Een NestJS-server installeren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-laragon-installeren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Laragon installeren
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-de-nestjs-server-installeren-en-configureren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. De NestJS-server installeren en configureren
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-de-database-maken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. De database maken
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-de-nestjs-server-starten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. De NestJS-server starten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-html-tests-voor-de-server-voor-de-belastingberekening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5. HTML-tests voor de server voor de belastingberekening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-de-json-api-van-de-server-voor-de-belastingberekening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6. De JSON-API van de server voor de belastingberekening
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6. De JSON-API van de server voor de belastingberekening">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#461-postman-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6.1. Postman-tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#462-tests-met-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6.2. Tests met curl
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="de-http-functies-van-typescript.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. De HTTP-functies van TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="http-clients-van-de-service-voor-de-belastingberekening.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. HTTP-clients van de service voor de belastingberekening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="toegang-tot-databases.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Toegang tot databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inleiding-tot-het-webframework-nestjs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Inleiding tot het webframework NestJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="casus-de-server-voor-de-belastingberekening-in-nestjs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Casus: de server voor de belastingberekening in NestJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusie.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Conclusie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="refheadingtoc169713055526765" name="refheadingtoc169713055526765" class="odt-bookmark-anchor"></span></p>
+<h1 id="4-een-nestjs-server-installeren">4. <span style="color: #2e74b5">Een NestJS-server installeren</span></h1>
+<p><strong>Opmerking</strong>: In het vervolg wordt soms verwezen naar een PHP-server, die uit de cursus [Introduction to the PHP7 Language Through Examples]. De NestJS-server implementeert dezelfde diensten als deze PHP-server. </p>
+<p>We behandelen de HTTP-functies van TypeScript, de functies waarmee u een webserver kunt bevragen. Voor onze tests hebben we een webserver nodig. We gebruiken de server die is ontwikkeld in de <a href="casus-de-server-voor-de-belastingberekening-in-nestjs.html#refheadingtoc355862534233595"><u><span style="color: #0563c1">„Casus”</span></u></a>-paragraaf<a href="casus-de-server-voor-de-belastingberekening-in-nestjs.html#refheadingtoc355862534233595"><u><span style="color: #0563c1">: de server voor de belastingberekening in NestJS</span></u></a>. Deze server host een JSON-service die de volgende diensten aanbiedt:</p>
+<ul>
+<li><strong><span style="color: #9a3412">[init-session] </span></strong>— <span style="color: #9a3412">GET main.php?action=init-session&amp;type=json </span>— geeft de server aan dat we JSON-antwoorden willen;</li>
+<li><strong><span style="color: #9a3412">[authenticate-user] </span></strong>— <span style="color: #9a3412">POST main.php?action=authenticate-user: </span>De twee <strong>via POST verzonden</strong> parameters <span style="color: #9a3412">[user, password] </span>bepalen of de verbinding met de JSON-service al dan niet is toegestaan. Standaard zijn de inloggegevens [admin, admin];</li>
+<li><strong><span style="color: #9a3412">[calculate-tax] </span></strong>— <span style="color: #9a3412">POST main.php?action=calculate-tax: </span> De via POST verzonden parameters <span style="color: #9a3412">[married, children, salary] </span>worden gebruikt om een belasting te berekenen:<ul>
+<li><strong>married</strong>: „yes” als gehuwd, anders „no”;</li>
+<li><strong>children</strong>: aantal kinderen van de belastingplichtige;</li>
+<li><strong>salary</strong>: het jaarsalaris van de belastingplichtige;</li>
+</ul>
+</li>
+<li><strong><span style="color: #9a3412">[list-simulations] </span></strong>— <span style="color: #9a3412">GET main.php?action=list-simulations </span>— toont de simulaties die sinds het begin van de sessie zijn uitgevoerd;</li>
+<li><strong><span style="color: #9a3412">[delete-simulation] </span></strong>— <span style="color: #9a3412">GET main.php?action=delete-simulation&amp;number=x </span>— verwijdert simulatie nr. x uit de lijst met simulaties;</li>
+<li><strong><span style="color: #9a3412">[get-admindata] </span></strong>— <span style="color: #9a3412">GET main.php?action=get-admindata </span> — haalt de volledige database die bij de server hoort op in een JSON-object;</li>
+<li><strong><span style="color: #9a3412">[end-session] </span></strong>— <span style="color: #9a3412"> GET main.php?action=end-session: </span>beëindigt de sessie. Om een nieuwe te starten, moet de gebruiker de hierboven beschreven opdracht „init-session” geven;</li>
+</ul>
+<p>We beschrijven nu hoe u deze server installeert. Als u deze server niet wilt installeren, ga dan direct naar de paragraaf <a href="de-http-functies-van-typescript.html#refheadingtoc172643055526765"><u><span style="color: #0563c1">„De HTTP-functies van TypeScript</span></u></a>”. U kunt de scripts dan niet in een draaiende omgeving testen, maar u kunt wel de code bekijken.</p>
+<h2 id="41-laragon-installeren">4.1. <span style="color: #1f4d78">Laragon installeren</span></h2>
+<p>Vanaf september 2026 is de tool Laragon beschikbaar op de URL [Download Laragon – Fast &amp; Modern Dev Environment ]. Laragon bevat tools waarmee u een PHP-server en het DBMS MySQL kunt installeren:</p>
+<p><img src="images/10000000000006440000030C86481A8B.png" width="643" height="312" style="width:17cm;height:8.266cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006440000030C86481A8B.png" /></p>
+<ul>
+<li>in [1], een Apache-webserver;</li>
+<li>in [2], het DBMS MySQL;</li>
+<li>in [3], een berichtentool die we niet gebruiken;</li>
+<li>[4] start alle services (Apache, MySQL, MailPit);</li>
+<li>[5] toont de webpagina op de URL [http://localhost]. Standaard verwijst deze URL naar de map &lt;laragon-install&gt;\www, waarbij &lt;laragon-install&gt; de installatiemap van Laragon is;</li>
+<li>in [6] wordt de tool HeidiSQL gestart, waarmee u MySQL-databases kunt beheren. We gebruiken deze tool om de database aan te maken die door de server voor de belastingberekening wordt gebruikt;</li>
+<li>in [7] opent u een terminal; alle binaries die Laragon nodig heeft, staan in PATH;</li>
+<li>in [8] opent u Windows Verkenner op de map die bij de URL [http://localhost] hoort;</li>
+</ul>
+<p>De installatiemap van Laragon bevat de volgende onderdelen:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002DB00000324CA05B23E.png" width="314" height="345" style="display:inline-block; margin:4px;width:8.306cm;height:9.133cm;" class="odt-zoomable" data-zoom-src="images/10000000000002DB00000324CA05B23E.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>In [1] bevat de map [bin] talloze applicaties:</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000329000004CE02139058.png" width="404" height="615" style="display:inline-block; margin:4px;width:10.7cm;height:16.27cm;" class="odt-zoomable" data-zoom-src="images/1000000000000329000004CE02139058.png" /></td></tr></table>
+
+<ul>
+<li>in [1], de Apache-webserver;</li>
+<li>in [2], een opdrachtregelterminal;</li>
+<li>in [3], een [git]-client waarmee u de verschillende versies van een project beheert;</li>
+<li>in [4], een databasebeheerder;</li>
+<li>[5], een e-mailbeheerder;</li>
+<li>in [6], het DBMS MySQL;</li>
+<li>[7], een andere webserver;</li>
+<li>in [8], [node.js] om JavaScript-scripts uit te voeren;</li>
+<li>[9], een teksteditor;</li>
+<li>in [10], de PHP-interpreter;</li>
+<li>in [11], de [Python]-interpreter;</li>
+<li>[12], een cacheserver;</li>
+</ul>
+<p>Laragon wordt geleverd met een uitgebreide ontwikkelomgeving. In deze cursus gebruiken we alleen het DBMS MySQL [6] en [heidisql] om dit grafisch te beheren;</p>
+<h2 id="42-de-nestjs-server-installeren-en-configureren">4.2. <span style="color: #1f4d78">De NestJS-server installeren en configureren</span></h2>
+<p>Een NestJS-server voor een sterk vereenvoudigde belastingberekening vindt u in de map <code>nestjs-case-study</code> binnen de scriptdirectory van deze cursus:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nestjs-case-study/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── package.json
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── nest-cli.json
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── .env.example
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── create_dbtaxes.sql
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── src/
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   ├── main.ts
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   ├── main.controller.ts
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── app.module.ts
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   ├── actions/
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   ├── config/
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   ├── entities/
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   ├── filters/
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   ├── model/
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   ├── responses/
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   ├── session/
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   └── utilities/
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>└── views/
+</code></pre></div>
+<p>Als u de afhankelijkheden voor de hele directoryboom al hebt geïnstalleerd (met <span style="color: #9a3412"><code>npm install</code> </span>in de rootdirectory, via de npm-<span style="color: #9a3412">workspaces </span>die in de inleiding van dit document zijn beschreven), bevat de map <span style="color: #9a3412"><code>nestjs-case-study</code> </span>al zijn <span style="color: #9a3412"><code>node\_modules</code></span>. Zo niet, ga dan naar die map en voer uit:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npm install
+</code></pre></div>
+<p><strong>Opmerking:</strong> Als u de batchinstallatie hebt gevolgd die in de inleiding wordt beschreven (door <code>npm install</code> uit te voeren in de root van <code>typescript-nestjs-course-scripts</code>), is deze stap al voltooid: ga direct door naar de configuratie hieronder.</p>
+<p>De server heeft een bestand <span style="color: #9a3412">.env </span>nodig om de verbindingsinstellingen op te geven voor de MySQL-database die door Laragon is gemaakt (zie hierboven), evenals de luisterpoort. Kopieer het meegeleverde bestand <span style="color: #9a3412">.env.example </span>naar <span style="color: #9a3412">.env </span>en pas het vervolgens aan:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">PORT</span><span class="o">=</span><span class="s">3000</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">TAX_DATA_SOURCE</span><span class="o">=</span><span class="s">mysql</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">DB_HOST</span><span class="o">=</span><span class="s">localhost</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="na">DB_PORT</span><span class="o">=</span><span class="s">3306</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="na">DB_NAME</span><span class="o">=</span><span class="s">dbtaxes-2019</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="na">DB_USER</span><span class="o">=</span><span class="s">admtaxes</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="na">DB_PASSWORD</span><span class="o">=</span><span class="s">pwdtaxes</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="na">CORS_ALLOWED</span><span class="o">=</span><span class="s">true</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="na">SESSION_SECRET</span><span class="o">=</span><span class="s">change-me-in-production</span>
+</code></pre></div>
+<ul>
+<li><span style="color: #9a3412">PORT</span>: de luisterpoort van de NestJS-server (standaard is<span style="color: #9a3412"> 3000</span>).</li>
+<li><span style="color: #9a3412">TAX_DATA_SOURCE: mysql om</span> de hieronder gemaakte database te gebruiken;</li>
+<li><span style="color: #9a3412">DB_HOST</span>, <span style="color: #9a3412">DB_PORT</span>, <span style="color: #9a3412">DB_NAME</span>, <span style="color: #9a3412">DB_USER</span>, <span style="color: #9a3412">DB_PASSWORD</span>: de verbindingsparameters voor de database <span style="color: #9a3412">dbtaxes-2019</span> die we met HeidiSQL zullen maken (zie hieronder), met dezelfde inloggegevens als die in het script <span style="color: #9a3412">create_dbtaxes.sql</span> dat in de directoryboom hierboven wordt getoond;</li>
+<li><span style="color: #9a3412">CORS_ALLOWED</span>: staat CORS-aanroepen (cross-origin) toe vanuit een TypeScript-client die op een andere poort draait.</li>
+<li><span style="color: #9a3412">SESSION_SECRET</span>: de sleutel waarmee de sessiecookie wordt ondertekend; wijzig deze als de server ooit openbaar toegankelijk moet worden gemaakt.</li>
+</ul>
+<h2 id="43-de-database-maken">4.3. <span style="color: #1f4d78">De database maken</span></h2>
+<p>Om de MySQL-database te maken die de NestJS-server nodig heeft, gebruiken we een optie van Laragon:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000006440000030C352A3F89.png" width="503" height="244" style="display:inline-block; margin:4px;width:13.301cm;height:6.468cm;" class="odt-zoomable" data-zoom-src="images/10000000000006440000030C352A3F89.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>In [1] moeten alle services zijn gestart;</li>
+<li>in [2] kunt u via de optie [Database] de database beheren;</li>
+</ul>
+<p>De optie [Database] start een hulpprogramma met de naam HeidiSQL:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000008D2000003C91FBD37B4.png" width="621" height="266" style="display:inline-block; margin:4px;width:16.431cm;height:7.05cm;" class="odt-zoomable" data-zoom-src="images/10000000000008D2000003C91FBD37B4.png" /></td></tr></table>
+
+<ul>
+<li>In [1] kunt u verschillende DBMS&#x27;en selecteren. De standaardwaarde is het DBMS MySQL. Dit is prima;</li>
+<li>in [2] meldt u zich aan bij HeidiSQL;</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003FD0000018A35CBA47C.png" width="357" height="138" style="display:inline-block; margin:4px;width:9.449cm;height:3.649cm;" class="odt-zoomable" data-zoom-src="images/10000000000003FD0000018A35CBA47C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002A4000001C70316A390.png" width="237" height="159" style="display:inline-block; margin:4px;width:6.26cm;height:4.21cm;" class="odt-zoomable" data-zoom-src="images/10000000000002A4000001C70316A390.png" /></td></tr></table>
+
+<ul>
+<li>In [1-2] voert u het SQL-bestand uit en selecteert u vervolgens het bestand [create_dbtaxes.sql], dat u in de map [nestjs-case-study] vindt:</li>
+</ul>
+<p><img src="images/100000000000018B0000020AC3036437.png" width="198" height="261" style="width:5.226cm;height:6.906cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000018B0000020AC3036437.png" /></p>
+<p>Als u het bestand [2] uitvoert, wordt de database [dbtaxes-2019] aangemaakt die door de server voor de belastingberekening wordt gebruikt. Om deze te bekijken, drukt u in HeidiSQL op F5 om de weergave te vernieuwen:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002B300000226D53BFF4F.png" width="314" height="250" style="display:inline-block; margin:4px;width:8.306cm;height:6.609cm;" class="odt-zoomable" data-zoom-src="images/10000000000002B300000226D53BFF4F.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>De database [dbtaxes-2019] is aangemaakt.</p>
+<h2 id="44-de-nestjs-server-starten">4.4. <span style="color: #1f4d78">De NestJS-server starten</span></h2>
+<p>Zodra het bestand <span style="color: #9a3412">.env </span>aanwezig is (en de database is aangemaakt), opent u een terminal in de root van de map [nestjs-case-study] en compileert en start u vervolgens de server:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm run build
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>npm run start:prod
+</code></pre></div>
+<p>Voor ontwikkeling, met automatisch herstarten na elke wijziging in de broncode, gebruikt u:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>npm run start:dev
+</code></pre></div>
+<p>In beide gevallen toont de console:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[Nest] ... [NestFactory] Starting Nest application...
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>[Nest] ... [InstanceLoader] AppModule dependencies initialized
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>[Nest] ... [RoutesResolver] MainController {/}:
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>[Nest] ... [RouterExplorer] Mapped {/main.php, ALL} route
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>[Nest] ... [NestApplication] Nest application successfully started
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>Tax calculation server (NestJS) started on http://localhost:3000
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>JSON entry point: http://localhost:3000/main.php?action=init-session&amp;type=json
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>HTML entry point: http://localhost:3000/main.php?action=init-session&amp;type=html
+</code></pre></div>
+<p>De NestJS-server heeft één enkel ingangspunt (<span style="color: #9a3412">main.php</span>, behouden voor compatibiliteit, ook al is het hier NestJS) dat alle verzoeken ontvangt, en een verzoekparameter <span style="color: #9a3412">„action”</span> die de uit te voeren verwerking selecteert:</p>
+<h2 id="45-html-tests-voor-de-server-voor-de-belastingberekening">4.5. <span style="color: #4f81bd">HTML<span style="color: #1f4d78">-tests voor de server voor de belastingberekening</span></span></h2>
+<p>Start, als u dat nog niet hebt gedaan, alle Laragon-services (voor MySQL) en de NestJS-server (<span style="color: #9a3412">npm run start:prod </span>of <span style="color: #9a3412">npm run start:dev</span>; zie hierboven). Vraag vervolgens in een browser de URL op<span style="color: #9a3412"> http://localhost:3000/main.php?action=init-session&amp;type=html</span> — dit is dezelfde actie <span style="color: #9a3412"><code>init-session</code> </span>als bij de PHP-server, met dezelfde parameter <span style="color: #9a3412"><code>type=html</code> </span>maar dan op poort 3000:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046A000001FE5F7732B2.png" width="529" height="239" style="display:inline-block; margin:4px;width:14cm;height:6.318cm;" class="odt-zoomable" data-zoom-src="images/100000000000046A000001FE5F7732B2.png" /></td></tr></table>
+
+<p>De inloggegevens zijn <span style="color: #9a3412">admin/admin</span>, precies dezelfde als voor de PHP-server; ze worden op dezelfde manier gedefinieerd, in de servercode in plaats van in <span style="color: #9a3412">config.json</span>. Voer ze in:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046A000002450B06427B.png" width="529" height="272" style="display:inline-block; margin:4px;width:14cm;height:7.198cm;" class="odt-zoomable" data-zoom-src="images/100000000000046A000002450B06427B.png" /></td></tr></table>
+
+<p>Vul het formulier in en verzend het. U ziet de volgende pagina:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046A000002F763287DD5.png" width="529" height="355" style="display:inline-block; margin:4px;width:14cm;height:9.403cm;" class="odt-zoomable" data-zoom-src="images/100000000000046A000002F763287DD5.png" /></td></tr></table>
+
+<p>Het resultaat van de belastingberekening wordt weergegeven; deze pagina gebruikt dus daadwerkelijk de database die we zojuist hebben gemaakt. De link „Lijst met simulaties” in het menu aan de linkerkant toont de berekeningsgeschiedenis van deze sessie:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046A000001B2FA555E9A.png" width="529" height="203" style="display:inline-block; margin:4px;width:14cm;height:5.376cm;" class="odt-zoomable" data-zoom-src="images/100000000000046A000001B2FA555E9A.png" /></td></tr></table>
+
+<p>Als u deze resultaten krijgt, werkt de NestJS-server voor de belastingberekening correct met zijn MySQL-database. We zijn nu klaar om de server met TypeScript-clients te bevragen. Hiervoor gebruiken we de JSON-versie van de server.</p>
+<h2 id="46-de-json-api-van-de-server-voor-de-belastingberekening">4.6. <span style="color: #1f4d78">De JSON-API van de server voor de belastingberekening</span></h2>
+<h3 id="461-postman-tests">4.6.1. <span style="color: #4f81bd"><span style="color: #2e74b5">Postman</span>-tests</span></h3>
+<p>De PHP-server is getest met de desktoptool Postman. Dezelfde collectie verzoeken (<span style="color: #9a3412">tax-servers-tests.postman_collection.json, meegeleverd in de map nestjs-course</span>) werkt identiek tegen de NestJS-server: de JSON-API is exact dezelfde, met dezelfde acties, dezelfde parameters en dezelfde <span style="color: #9a3412">status</span>codes. Wijzig in Postman gewoon de poort van elk verzoek (<span style="color: #9a3412">80 </span>→<span style="color: #9a3412"> 3000</span>), of nog eenvoudiger: wijzig <span style="color: #9a3412">de basis-URL </span>in de collectie, als u die als variabele hebt gedefinieerd.</p>
+<p>De tool Postman is beschikbaar op de URL [https://www.postman.com/downloads/]. Mogelijk moet u een account aanmaken.</p>
+<p>Start alle Laragon-services en open vervolgens de desktopapp van Postman:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002DD000001CDECEE907C.png" width="294" height="184" style="display:inline-block; margin:4px;width:7.766cm;height:4.881cm;" class="odt-zoomable" data-zoom-src="images/10000000000002DD000001CDECEE907C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000020D0000014C25D78584.png" width="263" height="166" style="display:inline-block; margin:4px;width:6.946cm;height:4.392cm;" class="odt-zoomable" data-zoom-src="images/100000000000020D0000014C25D78584.png" /></td></tr></table>
+
+<ul>
+<li>In [1-2] maakt u een HTTP-verzoek om de server voor de belastingberekening te bevragen;</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000489000001E8A75DCF2D.png" width="465" height="195" style="display:inline-block; margin:4px;width:12.291cm;height:5.159cm;" class="odt-zoomable" data-zoom-src="images/1000000000000489000001E8A75DCF2D.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>In [1] kunt u uw HTTP-verzoek een naam geven. U kunt het opslaan en later terugvinden;</li>
+<li>In [2]: voer de URL in van de server die u wilt bevragen;</li>
+<li>in [3]: selecteer het type HTTP-verzoek. We gebruiken hierna twee typen: GET en POST;</li>
+<li>in [4]: als uw verzoek parameters heeft van het type [?param1=val1&amp;param2=val2&amp;…], kunt u die hier definiëren;</li>
+<li>in [5]: als het verzoektype POST is, definieert u hier de verzonden waarden;</li>
+</ul>
+<p>In [nestjs-course] vindt u een collectie HTTP-verzoeken aan de server voor de belastingberekening die u in POSTMAN kunt importeren.</p>
+<p><img src="images/100000000000026C000001A4C372851A.png" width="310" height="210" style="width:8.202cm;height:5.556cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000026C000001A4C372851A.png" /></p>
+<p>Ga als volgt te werk. Voer in Postman [Ctrl-O] uit:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003F80000026C727A3698.png" width="406" height="248" style="display:inline-block; margin:4px;width:10.749cm;height:6.56cm;" class="odt-zoomable" data-zoom-src="images/10000000000003F80000026C727A3698.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>Gebruik de link [1] om het bestand [tax-servers-tests.postman_collection.json] uit de map [nestjs-course] te importeren:</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000023A0000036167185DE7.png" width="285" height="432" style="display:inline-block; margin:4px;width:7.541cm;height:11.441cm;" class="odt-zoomable" data-zoom-src="images/100000000000023A0000036167185DE7.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>In [1] de naam van de geïmporteerde collectie;</li>
+<li>in [2] de inhoud ervan. Dit is een lijst met (HTTP-)verzoeken aan de server voor de belastingberekening (JSON);</li>
+</ul>
+<p>Laten we bijvoorbeeld het verzoek met de naam [init-session-json-700] bekijken. Het start een JSON-sessie met de server:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000058B0000023A657300CB.png" width="426" height="171" style="display:inline-block; margin:4px;width:11.261cm;height:4.524cm;" class="odt-zoomable" data-zoom-src="images/100000000000058B0000023A657300CB.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>In [1] is het HTTP-verzoek een GET;</li>
+<li>in [2] de opgevraagde URL. Hiermee wordt een JSON-dialoog met de server gestart;</li>
+<li>in [3-4] vinden we de parameters van de GET;</li>
+<li>in [5] om het verzoek naar de server voor de belastingberekening te verzenden;</li>
+</ul>
+<p>Zorg er voordat u het verzoek verzendt voor dat de Laragon-services zijn gestart. Het JSON-antwoord van de server is als volgt:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003D90000017FE959F671.png" width="457" height="178" style="display:inline-block; margin:4px;width:12.102cm;height:4.706cm;" class="odt-zoomable" data-zoom-src="images/10000000000003D90000017FE959F671.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Gebruik nu het verzoek met de naam [init-session-703]:</p>
+<p><img src="images/10000000000003EE000002034E3A763A.png" width="488" height="251" style="width:12.91cm;height:6.629cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003EE000002034E3A763A.png" /></p>
+<p>Het verzoek [1-3] is ongeldig. De parameters moeten van het type [?action=xx&amp;type=yy] zijn, waarbij „type” „html”, „xml” of „json” kan zijn. Het type „x” wordt niet herkend. Het JSON-antwoord van de server is als volgt:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000049C0000014E5C6DDB27.png" width="374" height="106" style="display:inline-block; margin:4px;width:9.904cm;height:2.803cm;" class="odt-zoomable" data-zoom-src="images/100000000000049C0000014E5C6DDB27.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Verzend het verzoek [init-session-json-700] opnieuw om een JSON-sessie opnieuw te starten. Verzend daarna het verzoek [authenticate-user-200] om u te authenticeren:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000041F00000213B67C9E9D.png" width="496" height="248" style="display:inline-block; margin:4px;width:13.12cm;height:6.572cm;" class="odt-zoomable" data-zoom-src="images/100000000000041F00000213B67C9E9D.png" /></td></tr></table>
+
+<ul>
+<li>In [1] is het verzoek een POST;</li>
+<li>in [2] de URL van het authenticatieverzoek;</li>
+<li>in [3] de body van de POST, die de verzonden waarden bevat;</li>
+<li>[4-5], de twee verzonden waarden. Dit zijn de inloggegevens van de beheerder van de applicatie. Ze zijn gedefinieerd in het bestand [config.service.ts] van de server;</li>
+</ul>
+<p><img src="images/10000000000001B10000021161CB11A6.png" width="217" height="265" style="width:5.729cm;height:6.999cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001B10000021161CB11A6.png" /></p>
+<p>Het JSON-antwoord van de server is als volgt:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000042C00000153667C5305.png" width="427" height="136" style="display:inline-block; margin:4px;width:11.299cm;height:3.59cm;" class="odt-zoomable" data-zoom-src="images/100000000000042C00000153667C5305.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Zodra u bent geauthenticeerd, kunt u een belastingberekening uitvoeren. Gebruik hiervoor het verzoek [calculate-tax-300]:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003E400000226343A09A7.png" width="465" height="256" style="display:inline-block; margin:4px;width:12.303cm;height:6.77cm;" class="odt-zoomable" data-zoom-src="images/10000000000003E400000226343A09A7.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>In [1] gaat het om een POST-verzoek;</li>
+<li>in [2] de opgevraagde URL;</li>
+<li>in [3-4] worden de drie waarden verzonden;</li>
+</ul>
+<p>Het JSON-antwoord is als volgt:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003DC00000292646CB948.png" width="461" height="307" style="display:inline-block; margin:4px;width:12.197cm;height:8.123cm;" class="odt-zoomable" data-zoom-src="images/10000000000003DC00000292646CB948.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Voer het verzoek meerdere keren uit en wijzig telkens de verzonden waarden. Voer daarna het verzoek [list-simulations-500] uit, dat de lijst met uitgevoerde simulaties toont:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000484000001D8BFB5BCE4.png" width="578" height="235" style="display:inline-block; margin:4px;width:15.289cm;height:6.227cm;" class="odt-zoomable" data-zoom-src="images/1000000000000484000001D8BFB5BCE4.png" /></td></tr></table>
+
+<ul>
+<li>Het GET-verzoek [1-4] heeft slechts één parameter: [action]. Het JSON-antwoord is als volgt:</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002A600000419B6784BFB.png" width="339" height="525" style="display:inline-block; margin:4px;width:8.969cm;height:13.878cm;" class="odt-zoomable" data-zoom-src="images/10000000000002A600000419B6784BFB.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Dit is de lijst met simulaties die u hebt uitgevoerd.</p>
+<p>Gebruik het verzoek [delete-simulation-600] om een simulatie te verwijderen:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000004C8000002088796A8C4.png" width="612" height="260" style="display:inline-block; margin:4px;width:16.191cm;height:6.879cm;" class="odt-zoomable" data-zoom-src="images/10000000000004C8000002088796A8C4.png" /></td></tr></table>
+
+<ul>
+<li>In [2] wordt de URL met een GET opgevraagd. Deze bevat twee parameters [action, number]. [number] is het nummer van de simulatie die u uit de lijst met simulaties wilt verwijderen. Hier verwijst nummer 0 naar de eerste simulatie in de lijst;</li>
+</ul>
+<p>Het JSON-antwoord van de server is als volgt:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002A1000002E6FA9A8F20.png" width="337" height="371" style="display:inline-block; margin:4px;width:8.904cm;height:9.816cm;" class="odt-zoomable" data-zoom-src="images/10000000000002A1000002E6FA9A8F20.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Het JSON-antwoord is de resterende lijst met simulaties nadat er een is verwijderd;</p>
+<p>Ten slotte kunt u de sessie beëindigen met het verzoek [end-session-400]:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046B0000022EE2E381F9.png" width="420" height="207" style="display:inline-block; margin:4px;width:11.104cm;height:5.477cm;" class="odt-zoomable" data-zoom-src="images/100000000000046B0000022EE2E381F9.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>De URL van het verzoek [1-2] heeft alleen de parameter [action] (3). Het JSON-antwoord is als volgt:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003600000014BBAD0269D.png" width="294" height="112" style="display:inline-block; margin:4px;width:7.766cm;height:2.976cm;" class="odt-zoomable" data-zoom-src="images/10000000000003600000014BBAD0269D.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<h3 id="462-tests-met-curl">4.6.2. <span style="color: #2e74b5">Tests met curl</span></h3>
+<p>We kunnen ook de tool [curl] gebruiken om de JSON-services van de server te testen. Alle onderstaande verzoeken gebruiken dezelfde HTTP-sessie (de optie <span style="color: #9a3412">-b/-c cookies.txt </span>van <span style="color: #9a3412">curl </span>bewaart de sessiecookie tussen de aanroepen, net zoals een browser of Postman dat zou doen):</p>
+<p>Laten we een JSON-sessie starten met de actie <span style="color: #9a3412">[init-session]</span>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>curl -c cookies.txt "http://localhost:3000/main.php?action=init-session&amp;type=json"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"init-session"</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"session started with type [json]"</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">}</span>
+</code></pre></div>
+<p>Statuscode<span style="color: #9a3412"> 700 </span>bevestigt dat de sessie is gestart; dit is dezelfde code die de PHP-server teruggeeft. Laten we ons nu authenticeren met de actie <span style="color: #9a3412">[authenticate-user]</span>, een <span style="color: #9a3412">POST</span>-verzoek met één parameter in de URL (<span style="color: #9a3412">action</span>) en de verzonden inloggegevens:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>curl -b cookies.txt -c cookies.txt -X POST "http://localhost:3000/main.php?action=authenticate-user" \
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>     -d "user=admin&amp;password=admin"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authenticate-user"</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authentication successful [admin, admin]"</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">}</span>
+</code></pre></div>
+<p>U kunt nu belastingen berekenen met de actie [calculate-tax], opnieuw een POST-verzoek<span style="color: #9a3412"> </span>met de drie verzonden parameters: <span style="color: #9a3412">burgerlijke staat</span>, <span style="color: #9a3412">kinderen, </span>en <span style="color: #9a3412">salaris</span>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>curl -b cookies.txt -c cookies.txt -X POST "http://localhost:3000/main.php?action=calculate-tax" \
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>     -d "married=yes&amp;children=2&amp;salary=45000"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calculate-tax"</span><span class="p">,</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nt">"married"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yes"</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="nt">"children"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="nt">"salary"</span><span class="p">:</span><span class="w"> </span><span class="mi">45000</span><span class="p">,</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="nt">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">502</span><span class="p">,</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="nt">"surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nt">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">857</span><span class="p">,</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nt">"reduction"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.14</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="p">}</span>
+</code></pre></div>
+<p>De waarden zijn exact dezelfde (€502 belasting, een korting van €857, een vermindering van 126 € en een tarief van 14%) als die in de vorige paragraaf in de browser werden getoond; de twee versies, HTML en JSON, delen dezelfde rekenmotor. De lijst met simulaties verkrijgt u met de actie <span style="color: #9a3412">[list-simulations]</span>, een eenvoudige <span style="color: #9a3412">GET</span>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>curl -b cookies.txt -c cookies.txt "http://localhost:3000/main.php?action=list-simulations"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list-simulations"</span><span class="p">,</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">      </span><span class="nt">"married"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yes"</span><span class="p">,</span><span class="w"> </span><span class="nt">"children"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"salary"</span><span class="p">:</span><span class="w"> </span><span class="mi">45000</span><span class="p">,</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">      </span><span class="nt">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">502</span><span class="p">,</span><span class="w"> </span><span class="nt">"surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">857</span><span class="p">,</span><span class="w"> </span><span class="nt">"reduction"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w"> </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.14</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="p">}</span>
+</code></pre></div>
+<p>Voer het verzoek <span style="color: #9a3412">[calculate-tax] </span>meerdere keren uit en wijzig telkens de verzonden waarden. Gebruik daarna <span style="color: #9a3412">[delete-simulation] </span>om een simulatie uit de lijst te verwijderen (<span style="color: #9a3412">&amp;number=x </span>verwijst naar het volgnummer ervan) en <span style="color: #9a3412">[get-admindata] </span>om de volledige database in JSON-formaat op te halen (belastingschijven en rekenconstanten). Beëindig ten slotte de sessie met de actie <span style="color: #9a3412">[end-session]</span>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>curl -b cookies.txt -c cookies.txt "http://localhost:3000/main.php?action=end-session"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end-session"</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"session deleted"</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">}</span>
+</code></pre></div>
+<p>U hebt nu een goed beeld van de JSON-API die de NestJS-server voor de belastingberekening aanbiedt, en die precies hetzelfde is als die van de PHP-server. We kunnen nu overgaan op het schrijven van TypeScript-scripts die deze server bevragen.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Deze tutorial, geschreven door de AI <strong>Claude</strong> van Anthropic en nagelezen door <strong>Serge Tahé</strong>, wordt aan het publiek ter beschikking gesteld onder de voorwaarden van de licentie
+        <em>Creative Commons Naamsvermelding – Niet-commercieel –
+        Gelijk delen 3.0 Unported</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
